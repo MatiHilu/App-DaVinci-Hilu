@@ -3,7 +3,7 @@
            FOOTER 3
         ===================
         -->
-        <footer class="mh-footer mh-footer-3">
+        <footer id="mh-contact" class="mh-footer mh-footer-3">
             <div class="container-fluid">
                 <div class="row section-separator">
                     <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
@@ -21,8 +21,7 @@
                                             <div class="each-info media-body">
                                                 <h4>Address</h4>
                                                 <address>
-                                                    5th Avenue, 34th floor, <br>
-                                                     New york
+                                                {{ $user->address }}
                                                 </address>
                                             </div>
                                         </div>
@@ -34,8 +33,7 @@
                                             </div>
                                             <div class="each-info media-body">
                                                 <h4>Email</h4>
-                                                <a href="mailto:yourmail@email.com">yourmail@email.com</a><br>
-                                                <a href="mailto:yourmail@email.com">yourmail@email.com</a>
+                                                <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -46,8 +44,7 @@
                                             </div>
                                             <div class="each-info media-body">
                                                 <h4>Phone</h4>
-                                                <a href="callto:(880)-8976-987">(880)-8976-987</a><br>
-                                                <a href="callto:(880)-8976-987">(880)-8976-987</a>
+                                                <a href="callto:{{ $user->tel }}">{{ $user->tel }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -88,10 +85,13 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <ul class="social-icon">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                @foreach ($user->rrss as $rrss)
+                                                    <li><a href="{{ $rrss->link }}"><i class="fa fa-facebook"></i></a></li>
+                                                @endforeach
+                                                <!--<li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
                                             </ul>
                                         </div>
                                     </div>
@@ -112,33 +112,33 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
     <!-- jQuery -->
-    <script src="assets/plugins/js/jquery.min.js"></script>
+    <script src="{{ asset('assets/plugins/js/jquery.min.js') }}"></script>
     <!-- popper -->
-    <script src="assets/plugins/js/popper.min.js"></script>
+    <script src="{{ asset('assets/plugins/js/popper.min.js') }}"></script>
     <!-- bootstrap -->
-    <script src="assets/plugins/js/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/plugins/js/bootstrap.min.js') }}"></script>
     <!-- owl carousel -->
-    <script src="assets/plugins/js/owl.carousel.js"></script>
+    <script src="{{ asset('assets/plugins/js/owl.carousel.js') }}"></script>
     <!-- validator -->
-    <script src="assets/plugins/js/validator.min.js"></script>
+    <script src="{{ asset('assets/plugins/js/validator.min.js') }}"></script>
     <!-- wow -->
-    <script src="assets/plugins/js/wow.min.js"></script>
+    <script src="{{ asset('assets/plugins/js/wow.min.js') }}"></script>
     <!-- mixin js-->
-    <script src="assets/plugins/js/jquery.mixitup.min.js"></script>
+    <script src="{{ asset('assets/plugins/js/jquery.mixitup.min.js') }}"></script>
     <!-- circle progress-->
-    <script src="assets/plugins/js/circle-progress.js"></script>
+    <script src="{{ asset('assets/plugins/js/circle-progress.js') }}"></script>
     <!-- jquery nav -->
-    <script src="assets/plugins/js/jquery.nav.js"></script>
+    <script src="{{ asset('assets/plugins/js/jquery.nav.js') }}"></script>
     <!-- Fancybox js-->
-    <script src="assets/plugins/js/jquery.fancybox.min.js"></script>
+    <script src="{{ asset('assets/plugins/js/jquery.fancybox.min.js') }}"></script>
     <!-- Map api -->
-    <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyCRP2E3BhaVKYs7BvNytBNumU0MBmjhhxc"></script>
+    <script src="{{ asset('http://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyCRP2E3BhaVKYs7BvNytBNumU0MBmjhhxc') }}"></script>
     <!-- isotope js-->
-    <script src="assets/plugins/js/isotope.pkgd.js"></script>
-    <script src="assets/plugins/js/packery-mode.pkgd.js"></script>
+    <script src="{{ asset('assets/plugins/js/isotope.pkgd.js') }}"></script>
+    <script src="{{ asset('assets/plugins/js/packery-mode.pkgd.js') }}"></script>
     <!-- Custom Scripts-->
-    <script src="assets/js/map-init.js"></script>
-    <script src="assets/js/custom-scripts.js"></script>
+    <script src="{{ asset('assets/js/map-init.js') }}"></script>
+    <script src="{{ asset('assets/js/custom-scripts.js') }}"></script>
 
 
     <!-- ****************
@@ -146,7 +146,7 @@
       JavaScript/jQuery according to http://browserdiet.com/en/ for better performance
     **************** -->
     <!-- STYLE SWITCH STYLESHEET ONLY FOR DEMO -->
-    <link rel="stylesheet" href="demo/demo.css">
+  <!--  <link rel="stylesheet" href="demo/demo.css">
     <script type="text/javascript" src="demo/styleswitcher.js"></script>
     <script type="text/javascript" src="demo/demo.js"></script>
         <div class="demo-style-switch" id="switch-style">
@@ -157,10 +157,10 @@
             <h4>Style One </h4>
             <ul>
                 <li>
-                    <a href="home-one.html"> <img src="assets/images/h1w.png" alt="" class="img-fluid"></a>
+                    <a href="home-one.html"> <img src="{{ asset('assets/images/h1w.png') }}" alt="Demo" class="img-fluid"></a>
                 </li>
                 <li>
-                    <a href="home-one-w.html"> <img src="assets/images/h1.png" alt="" class="img-fluid"></a>
+                    <a href="home-one-w.html"> <img src="{{ asset('assets/images/h1.png') }}" alt="Demo" class="img-fluid"></a>
                 </li>
             </ul>
         </li>
@@ -168,10 +168,10 @@
             <h4>Style Two </h4>
             <ul>
                 <li>
-                    <a href="home-two.html"> <img src="assets/images/h2w.png" alt="" class="img-fluid"></a>
+                    <a href="home-two.html"> <img src="{{ asset('assets/images/h2w.png') }}" alt="Demo" class="img-fluid"></a>
                 </li>
                 <li>
-                    <a href="home-two-w.html"> <img src="assets/images/h2.png" alt="" class="img-fluid"></a>
+                    <a href="home-two-w.html"> <img src="{{ asset('assets/images/h2.png') }}" alt="Demo" class="img-fluid"></a>
                 </li>
             </ul>
         </li>
@@ -180,10 +180,10 @@
             <h4>RTl</h4>
             <ul>
                 <li>
-                    <a href="home-rtl.html"> <img src="assets/images/h3w.png" alt="" class="img-fluid"></a>
+                    <a href="home-rtl.html"> <img src="{{ asset('assets/images/h3w.png') }}" alt="Demo" class="img-fluid"></a>
                 </li>
                 <li>
-                    <a href="home-rtl-w.html"> <img src="assets/images/h3.png" alt="" class="img-fluid"></a>
+                    <a href="home-rtl-w.html"> <img src="{{ asset('assets/images/h3.png') }}" alt="Demo" class="img-fluid"></a>
                 </li>
             </ul>
         </li>
@@ -216,7 +216,7 @@
         <li><a href="#" onclick="setActiveStyleSheet('red'); return false;" title="Red">
             <div class="red"></div></a>
         </li>
-    </ul>
+    </ul> -->
     </div>
     </div>
 </body>

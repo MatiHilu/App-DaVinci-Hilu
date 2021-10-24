@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +22,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('hola', function() {
-
+   // $Users = User::get()->all();
+    $Users = User::where('name', 'Garnett Torp')->get();
+    dd($Users);
     return view('hola');
 
 });
@@ -41,5 +43,25 @@ Route::get('/hola/{name}', function($name) {
 
 });
 
-Route::view('/portfolio', 'portfolio');
+Route::get('portfolio', function(){
 
+    $user = User::with('skill')->with('education')->with('rrss')->with('whatido')->with('projects')->with('professional')->with('experience')->with('blog')->latest()->get();
+    //$skill = Skill::latest()->get();
+
+    //dd($user);
+
+
+    return view('portfolio')->with('user', $user[0]);
+    // return view('portfolio', compact('user', 'skill'));
+
+});
+
+/* Route::view('/portfolio', function($Users) {
+    $Users = User::get()->all();
+    dd($Users);
+}); */
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>Maha - Personal CV/Resume Template </title>
+        <title>{{ $user->name }} - Personal CV/Resume Template </title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,10 +12,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- FAV AND ICONS   -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
-        <link rel="shortcut icon" href="assets/images/apple-icon.png">
-        <link rel="shortcut icon" sizes="72x72" href="assets/images/apple-icon-72x72.png">
-        <link rel="shortcut icon" sizes="114x114" href="assets/images/apple-icon-114x114.png">
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('assets/images/apple-icon.png') }}">
+        <link rel="shortcut icon" sizes="72x72" href="{{ asset('assets/images/apple-icon-72x72.png') }}">
+        <link rel="shortcut icon" sizes="114x114" href="{{ asset('assets/images/apple-icon-114x114.png') }}">
 
         <!-- Google Font-->
         <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -84,12 +84,12 @@
                                 <li class="nav-item">
                                    <a class="nav-link" href="#mh-experience">Experiences</a>
                                 </li>
-                                <li class="nav-item">
+                                <!--<li class="nav-item">
                                     <a class="nav-link" href="#mh-portfolio">Portfolio</a>
-                                </li>
-                                <li class="nav-item">
+                                </li>-->
+                                <!--<li class="nav-item">
                                     <a class="nav-link" href="#mh-pricing">Pricing</a>
-                                </li>
+                                </li>-->
                                 <li class="nav-item">
                                     <a class="nav-link" href="#mh-blog">Blog</a>
                                 </li>
