@@ -4,7 +4,8 @@
         ===================
         -->
         <footer id="mh-contact" class="mh-footer mh-footer-3">
-            <div class="container-fluid">
+            <p class="col-sm-12 text-center wow fadeInUp my-3">My cv {{ $user->name }}</p>
+            <!--<div class="container-fluid">
                 <div class="row section-separator">
                     <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
                         <h3>Contact Me</h3>
@@ -69,7 +70,7 @@
                                                 <textarea class="contact-message" id="message" rows="6" placeholder="Your Message" required></textarea>
                                             </div>
 
-                                            <!-- Subject Button -->
+                                           
                                             <div class="btn-form col-sm-12">
                                                 <button type="submit" class="btn btn-fill btn-block" id="form-submit">Send Message</button>
                                             </div>
@@ -88,10 +89,10 @@
                                                 @foreach ($user->rrss as $rrss)
                                                     <li><a href="{{ $rrss->link }}"><i class="fa fa-facebook"></i></a></li>
                                                 @endforeach
-                                                <!--<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
+                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -100,7 +101,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </footer>
 
     <!--

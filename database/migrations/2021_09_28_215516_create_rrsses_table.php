@@ -15,9 +15,12 @@ class CreateRrssesTable extends Migration
     {
         Schema::create('rrsses', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('link');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

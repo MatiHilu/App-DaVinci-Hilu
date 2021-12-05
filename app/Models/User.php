@@ -9,9 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
+    use HasRoles;
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
@@ -25,8 +27,24 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'presentation',
+        'slug',
+        'title_job',
         'email',
         'password',
+        'image',
+        'tel',
+        'address',
+        'image_about_me',
+        'link_facebook',
+        'link_linkedin',
+        'link_github',
+        'link_instagram',
+        'titulo_about_me',
+        'about_me',
+        'titulo_what_i_do',
+        'titulo_skills',
+        'titulo_professional_skills',
     ];
 
     /**
@@ -97,5 +115,23 @@ class User extends Authenticatable
     public function blog()
     {
         return $this->hasMany(Blog::class, 'user_id', 'id');
+    }
+    
+    public function getGetImageAttribute($key){
+        if($this->image){
+            return url("storage/$this->image");
+        }
+    }
+
+    public function getGetImage2Attribute($key){
+        if($this->image_about_me){
+            return url("storage/$this->image_about_me");
+        }
+    }
+
+    public function getUppercaseAttribute($key){
+
+        return strtoupper($this->name);
+
     }
 }

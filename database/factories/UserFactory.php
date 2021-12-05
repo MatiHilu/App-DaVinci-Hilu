@@ -26,9 +26,14 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'presentation' => $this->faker->word(),
             'email' => $this->faker->unique()->safeEmail(),
             'slug' => $this->faker->word(),
             'title_job' => $this->faker->text,
+            'link_facebook' => $this->faker->text,
+            'link_instagram' => $this->faker->text,
+            'link_github' => $this->faker->text,
+            'link_linkedin' => $this->faker->text,
             'about_me' => $this->faker->text,
             'tel' => '+541134436758',
             'address' => $this->faker->address,
@@ -36,6 +41,11 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => '$2a$04$b/r1qCIaN86MluqsPrvGHOY9K76hoiHtF18NH5X3aqmGvuOABZgaC', // password 1234
             'remember_token' => Str::random(10),
+            'titulo_about_me' => 'About me',
+            'titulo_what_i_do' => 'What I do',
+            'titulo_skills' => 'Skills',
+            'titulo_professional_skills' => 'Professional skills',
+
         ];
     }
 

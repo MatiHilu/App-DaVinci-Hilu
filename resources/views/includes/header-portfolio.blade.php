@@ -84,18 +84,23 @@
                                 <li class="nav-item">
                                    <a class="nav-link" href="#mh-experience">Experiences</a>
                                 </li>
+                                @if(Auth::check())
+                                <li class="nav-item">
+                                   <a class="nav-link" href="{{ url('/my-portfolio')  }}">Volver al Dashboard</a>
+                                </li>
+                                @endif
                                 <!--<li class="nav-item">
                                     <a class="nav-link" href="#mh-portfolio">Portfolio</a>
                                 </li>-->
                                 <!--<li class="nav-item">
                                     <a class="nav-link" href="#mh-pricing">Pricing</a>
                                 </li>-->
-                                <li class="nav-item">
+                                <!--<li class="nav-item">
                                     <a class="nav-link" href="#mh-blog">Blog</a>
-                                </li>
-                                <li class="nav-item">
+                                </li>-->
+                                <!--<li class="nav-item">
                                    <a class="nav-link" href="#mh-contact">Contact</a>
-                                </li>
+                                </li>-->
                             </ul>
                         </div>
                     </nav>

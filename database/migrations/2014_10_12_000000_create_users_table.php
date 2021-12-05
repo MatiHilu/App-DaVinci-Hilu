@@ -16,7 +16,9 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('presentation')->nullable();;
             $table->string('slug')->unique()->nullable();
+            $table->string('image')->nullable();
             $table->string('title_job')->nullable();
             $table->string('about_me')->nullable();
             $table->string('email')->unique();
@@ -28,6 +30,16 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->string('image_about_me')->nullable();
+            $table->string('link_facebook')->nullable();
+            $table->string('link_instagram')->nullable();
+            $table->string('link_github')->nullable();
+            $table->string('link_linkedin')->nullable();
+            $table->string('titulo_about_me')->nullable();;
+            $table->string('titulo_what_i_do')->nullable();;
+            $table->string('titulo_skills')->nullable();;
+            $table->string('titulo_professional_skills')->nullable();;
+  
             $table->timestamps();
         });
     }

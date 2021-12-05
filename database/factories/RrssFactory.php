@@ -22,6 +22,7 @@ class RrssFactory extends Factory
     public function definition()
     {
         return [
+            'name' => $this->faker->text(),
             'link' => $this->faker->text(),
             'user_id'     => rand(1,2),
         ];

@@ -12,7 +12,7 @@
                         <div class="col-sm-6">
                             <div class="mh-header-info">
                                 <div class="mh-promo wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">
-                                    <span>Hola soy</span>
+                                    <span>{{ $user->presentation }}</span>
                                 </div>
 
                                 <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">{{ $user->name }}</h2>
@@ -25,19 +25,37 @@
                                 </ul>
 
                                 <ul class="social-icon wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.7s">
-                                @foreach ($user->rrss as $rrss)
-                                    <li><a href="{{ $rrss->link }}"><i class="fa fa-facebook"></i></a></li>
-                                 @endforeach
-                                    <!-- <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li> -->
+                                @if ($user->link_facebook)
+                                    <li><a href="{{ $user->link_facebook }}"><i class="fa fa-facebook"></i></a></li>
+                                @else
+                                    
+                                @endif
+                                @if ($user->link_instagram)
+                                    <li><a href="{{ $user->link_instagram }}"><i class="fa fa-instagram"></i></a></li>
+                                @else
+                                    
+                                @endif
+                                @if ($user->link_github)
+                                    <li><a href="{{ $user->link_github }}"><i class="fa fa-github"></i></a></li>
+                                @else
+                                    
+                                @endif
+                                @if ($user->link_linkedin)
+                                    <li><a href="{{ $user->link_linkedin }}"><i class="fa fa-linkedin"></i></a></li>
+                                @else
+                                    
+                                @endif    
                                 </ul>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="hero-img wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s">
                                 <div class="img-border">
+                                @if ($user->image)
+                                        <img src="{{ $user->get_image }}" alt="{{ $user->name }}"  class="img-fluid">
+                                    @else
                                     <img src="{{ asset('assets/images/hero.png') }}" alt="My photo"  class="img-fluid">
+                                    @endif                                   
                                 </div>
                             </div>
                         </div>
@@ -55,13 +73,17 @@
             <div class="container">
                 <div class="row section-separator">
                     <div class="col-sm-12 col-md-6">
-                        <div class="mh-about-img shadow-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
-                            <img src="{{ asset('assets/images/ab-img.png') }}" alt="About me" class="img-fluid">
+                    <div class="mh-about-img shadow-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
+                            @if ($user->image_about_me)
+                                <img class="card-img-top" src="{{ $user->get_image2 }}" alt="{{ $user->name }}">
+                            @else
+                                <img src="{{ asset('assets/images/ab-img.png') }}" alt="About me" class="img-fluid">
+                            @endif                                   
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6">
                         <div class="mh-about-inner">
-                            <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">About Me</h2>
+                            <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">{{ $user->titulo_about_me }}</h2>
                             <p class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">{{ $user->about_me }}</p>
                             <div class="mh-about-tag wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
                                 <ul>
@@ -93,7 +115,7 @@
             <div class="container">
                 <div class="row section-separator">
                     <div class="col-sm-12 text-center section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                        <h2>What I do</h2>
+                        <h2>{{ $user->titulo_what_i_do }}</h2>
                     </div>
                     @foreach ($user->whatido as $what)
                         <div class="col-sm-4">
@@ -113,7 +135,7 @@
           FEATURE PROJECTS
         ===================
         -->
-        <section class="mh-featured-project image-bg featured-img-one">
+<!--        <section class="mh-featured-project image-bg featured-img-one">
             <div class="img-color-overlay">
                 <div class="container">
                     <div class="row section-separator">
@@ -122,7 +144,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="mh-single-project-slide-by-side row">
-                                <!-- Project Items -->
+                                
                                 @foreach ($user->projects as $project)
                                     <div class="col-sm-12 mh-featured-item">
                                         <div class="row">
@@ -151,17 +173,18 @@
                                 @endforeach
                             </div>
                         </div>
-                    </div> <!-- End: .row -->
+                    </div> 
                 </div>
             </div>
         </section>
-
+-->
         <!--
         ===================
            SKILLS
         ===================
         -->
-        <section class="mh-skills" id="mh-skills">
+        <section class="mh-skills image-bg featured-img-one" id="mh-skills">
+        <div class="img-color-overlay">
             <div class="home-v-img">
                 <div class="container">
                     <div class="row section-separator">
@@ -171,7 +194,7 @@
                         <div class="col-sm-12 col-md-6">
                             <div class="mh-skills-inner">
                                 <div class="mh-professional-skill wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
-                                    <h3>Technical Skills</h3>
+                                    <h3>{{ $user->titulo_skills }}</h3>
                                     <div class="each-skills">
                                         @foreach ($user->skill as $skill)
                                             <div class="candidatos">
@@ -192,7 +215,7 @@
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div class="mh-professional-skills wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s">
-                                <h3>Professional Skills</h3>
+                                <h3>{{ $user->titulo_professional_skills }}</h3>
                                 <ul class="mh-professional-progress">
                                     @foreach ($user->professional as $prof)
                                         <li>
@@ -206,6 +229,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </section>
 
         <!--
@@ -213,6 +237,8 @@
            EXPERIENCES
         ===================
         -->
+<!--
+
         <section class="mh-experince image-bg featured-img-one" id="mh-experience">
             <div class="img-color-overlay">
                 <div class="container">
@@ -235,7 +261,7 @@
                             <div class="mh-work">
                                  <h3>Work Experience</h3>
                                 <div class="mh-experience-deatils">
-                                    <!-- Education Institutes-->
+                                    
                                     @foreach ($user->experience as $exp)
                                         <div class="mh-work-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
                                             <h4>{{ $exp->work_name }} <a href="#">{{ $exp->enterprice }}</a></h4> 
@@ -253,7 +279,7 @@
                 </div>
             </div>
         </section>
-
+-->
         <!--
         ===================
            PORTFOLIO
@@ -508,7 +534,7 @@
            BLOG
         ===================
         -->
-        <section class="mh-blog image-bg featured-img-two" id="mh-blog">
+<!--        <section class="mh-blog image-bg featured-img-two" id="mh-blog">
             <div class="img-color-overlay">
                 <div class="container">
                     <div class="row section-separator">
@@ -537,7 +563,7 @@
                 </div>
             </div>
         </section>
-
+-->
         <!--
         ===================
            Testimonial
